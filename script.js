@@ -1,37 +1,31 @@
+const url = 'https://weatherapi-com.p.rapidapi.com/current.json?q=53.1%2C-0.13';
 const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '2f0b5a46dfmsh95f6c2b76ff273ep1e342fjsn7572f5447b9c',
-		'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
-	}
+  method: 'GET',
+  headers: {
+    'x-rapidapi-key': '4ab2c7f4c9mshcc4e07c0be510b0p1d6d64jsn870c56a70556', // 
+    'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com'
+  }
 };
-const getWeather = (city) => {
-	cityName.innerHTML = city
-	fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city, options)
-		.then(response => response.json())
-		.then((response) => {
-			console.log(response)
 
-			temp.innerHTML = response.temp
-			temp2.innerHTML = response.temp
-			feels_like.innerHTML = response.feels_like
-			humidity.innerHTML = response.humidity
-			humidity2.innerHTML = response.humidity
-			min_temp.innerHTML = response.min_temp
-			max_temp.innerHTML = response.max_temp
-			wind_speed.innerHTML = response.wind_speed
-			wind_speed2.innerHTML = response.wind_speed
-			wind_degrees.innerHTML = response.wind_degrees
-			sunrise.innerHTML = response.sunrise
-			sunset.innerHTML = response.sunset
-		})
-		.catch(err => console.error(err));
+async function fetchWeatherData() {
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json(); 
+
+    const temperature = result.current.temp_c;
+    const condition = result.current.condition.text;
+    const wind = result.current.wind_kph;
+    const humidity = result.current.humidity;
+
+
+    document.getElementById('temperature').textContent = temperature;
+    document.getElementById('condition').textContent = condition;
+    document.getElementById('wind-speed').textContent = wind;
+    document.getElementById('humidity').textContent = humidity;
+    
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-submit.addEventListener("click", (e)=>{
-	e.preventDefault()
-	getWeather(city.value)
-})
-
-
-getWeather("London")
+fetchWeatherData();
