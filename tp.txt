@@ -1,0 +1,11 @@
+<th style="width: 22%;"> MinTempCelsius </th>
+<th style="width: 22%;"> MaxTempCelsius </th>
+<th style="width: 22%;"> WindAverageKmh </th>
+<th style="width: 22%;"> WindDirection </th>
+<th style="width: 22%;"> Forecast </th>
+
+
+temperature = response.temperature
+condition = response.condition
+wind = response.wind
+humidity = response.humidity
