@@ -1,3 +1,3 @@
 # Weather_Application
-A website which allows the user's to get the weather of various cities around the world
+A website which shows Weather Report.
 Wesite is Implemented using HTML, CSS, JavaScript.
